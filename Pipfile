@@ -1,0 +1,18 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+python-dotenv = "*"
+python-chzzk = { git = "https://github.com/billy0402/python-chzzk.git" }
+obsws-python = "*"
+
+[dev-packages]
+flake8 = "*"
+flake8-commas = "*"
+mypy = "*"
+yapf = "*"
+
+[requires]
+python_version = "3.11"
