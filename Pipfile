@@ -8,6 +8,7 @@ python-dotenv = "*"
 python-chzzk = { git = "https://github.com/billy0402/python-chzzk.git" }
 obsws-python = "*"
 py-notifier = "*"
+requests = "*"
 
 [dev-packages]
 flake8 = "*"
