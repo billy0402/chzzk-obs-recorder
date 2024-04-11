@@ -1,4 +1,3 @@
-import asyncio
 from time import sleep
 
 from python_chzzk import Chzzk, Credential
@@ -67,8 +66,3 @@ async def main():
     cache[channel_id] = channel_cache
 
     sleep(settings.time_delay)
-
-
-if __name__ == "__main__":
-    while True:
-        asyncio.run(main())
