@@ -1,4 +1,5 @@
 import asyncio
+from time import sleep
 
 from python_chzzk import Chzzk, Credential
 
@@ -41,7 +42,9 @@ async def main():
             message=start_title(channel) + '\n\n' +
             channel_message(channel_id, live_status),
         )
+    sleep(settings.time_delay)
 
 
 if __name__ == "__main__":
-    asyncio.run(main())
+    while True:
+        asyncio.run(main())
