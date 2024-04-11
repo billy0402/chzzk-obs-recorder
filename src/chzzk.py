@@ -3,17 +3,21 @@ import asyncio
 from python_chzzk import Chzzk, Credential
 
 from desktop_notification import show_desktop_notification
-from env import (chzzk_auth, chzzk_channel_id, chzzk_session,
-                 line_notify_access_token)
 from line_notification import line_notify_api_notify
 from notification import channel_message, start_title, stop_title
+from settings import Settings
+
+settings = Settings()
 
 
 async def main():
-    credential = Credential(auth=chzzk_auth, session=chzzk_session)
+    credential = Credential(
+        auth=settings.chzzk_auth,
+        session=settings.chzzk_session,
+    )
     chzzk = Chzzk(credential)
 
-    channel_id = chzzk_channel_id
+    channel_id = settings.chzzk_channel_id
     channel = await chzzk.channel(channel_id)
     live_status = await chzzk.live.status(channel_id=channel_id)
 
@@ -23,7 +27,7 @@ async def main():
             message=channel_message(channel_id, live_status),
         )
         line_notify_api_notify(
-            access_token=line_notify_access_token,
+            access_token=settings.line_notify_access_token,
             message=start_title(channel) + '\n\n' +
             channel_message(channel_id, live_status),
         )
@@ -33,7 +37,7 @@ async def main():
             message=channel_message(channel_id, live_status),
         )
         line_notify_api_notify(
-            access_token=line_notify_access_token,
+            access_token=settings.line_notify_access_token,
             message=start_title(channel) + '\n\n' +
             channel_message(channel_id, live_status),
         )
