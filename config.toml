@@ -1,0 +1,5 @@
+[connection]
+host = "localhost"
+port = 4455
+password = "mystrongpass"
+timeout = 3

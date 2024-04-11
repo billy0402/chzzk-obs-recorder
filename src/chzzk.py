@@ -7,6 +7,7 @@ from desktop_notification import show_desktop_notification
 from line_notification import line_notify_api_notify
 from models.cache import Cache
 from notification import channel_message, start_title, stop_title
+from obs import start_record, stop_record
 from settings import Settings
 
 settings = Settings()
@@ -37,7 +38,14 @@ async def main():
                 message=start_title(channel) + '\n\n' +
                 channel_message(channel_id, live_status),
             )
-        else:
+
+            start_record()
+            show_desktop_notification(title='[OBS] start record', message='')
+            line_notify_api_notify(
+                access_token=settings.line_notify_access_token,
+                message='[OBS] start record',
+            )
+        else:  # 'CLOSE'
             show_desktop_notification(
                 title=stop_title(channel),
                 message=channel_message(channel_id, live_status),
@@ -46,6 +54,13 @@ async def main():
                 access_token=settings.line_notify_access_token,
                 message=start_title(channel) + '\n\n' +
                 channel_message(channel_id, live_status),
+            )
+
+            stop_record()
+            show_desktop_notification(title='[OBS] stop record', message='')
+            line_notify_api_notify(
+                access_token=settings.line_notify_access_token,
+                message='[OBS] stop record',
             )
 
     channel_cache = Cache(channel=channel, live_status=live_status)
