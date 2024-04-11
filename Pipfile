@@ -4,7 +4,6 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
-python-dotenv = "*"
 pydantic-settings = "*"
 python-chzzk = { git = "https://github.com/billy0402/python-chzzk.git" }
 obsws-python = "*"
