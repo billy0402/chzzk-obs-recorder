@@ -7,6 +7,7 @@ name = "pypi"
 python-dotenv = "*"
 python-chzzk = { git = "https://github.com/billy0402/python-chzzk.git" }
 obsws-python = "*"
+py-notifier = "*"
 
 [dev-packages]
 flake8 = "*"
