@@ -31,3 +31,8 @@ async def main():
     cache[channel_id] = channel_cache
 
     sleep(settings.time_delay)
+
+
+async def loop_main():
+    while True:
+        await main()
