@@ -13,7 +13,7 @@ def is_obs_opened() -> bool:
         return False
 
 
-def start_record():
+def obs_start_recording():
     if not is_obs_opened():
         return
 
@@ -25,7 +25,7 @@ def start_record():
         client.start_record()
 
 
-def stop_record():
+def obs_stop_recording():
     if not is_obs_opened():
         return
 
