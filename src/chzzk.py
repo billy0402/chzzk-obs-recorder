@@ -30,35 +30,23 @@ async def main():
                 title=start_title(channel),
                 message=channel_message(channel_id, live_status),
             )
-            line_notify_api_notify(
-                access_token=settings.line_notify_access_token,
-                message=start_title(channel) + '\n\n' +
-                channel_message(channel_id, live_status),
-            )
+            line_notify_api_notify(message=start_title(channel) + '\n\n' +
+                                   channel_message(channel_id, live_status))
 
             start_record()
             show_desktop_notification(title='[OBS] start record', message='')
-            line_notify_api_notify(
-                access_token=settings.line_notify_access_token,
-                message='[OBS] start record',
-            )
+            line_notify_api_notify(message='[OBS] start record')
         else:  # 'CLOSE'
             show_desktop_notification(
                 title=stop_title(channel),
                 message=channel_message(channel_id, live_status),
             )
-            line_notify_api_notify(
-                access_token=settings.line_notify_access_token,
-                message=start_title(channel) + '\n\n' +
-                channel_message(channel_id, live_status),
-            )
+            line_notify_api_notify(message=start_title(channel) + '\n\n' +
+                                   channel_message(channel_id, live_status))
 
             stop_record()
             show_desktop_notification(title='[OBS] stop record', message='')
-            line_notify_api_notify(
-                access_token=settings.line_notify_access_token,
-                message='[OBS] stop record',
-            )
+            line_notify_api_notify(message='[OBS] stop record')
 
     channel_cache = Cache(channel=channel, live_status=live_status)
     cache[channel_id] = channel_cache

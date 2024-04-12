@@ -3,12 +3,12 @@ import requests
 from settings import settings
 
 
-def line_notify_api_notify(access_token: str, message: str):
+def line_notify_api_notify(message: str):
     if not settings.line_notify_access_token:
         return
 
     headers = {
-        'Authorization': f'Bearer {access_token}',
+        'Authorization': f'Bearer {settings.line_notify_access_token}',
     }
     body = {
         'message': message,
