@@ -11,6 +11,6 @@ while True:
         asyncio.run(main())
     except KeyboardInterrupt:
         stop_record()
-        show_desktop_notification(title='[OBS] stop record', message='')
+        show_desktop_notification(title='[OBS] stop record')
         line_notify_api_notify(message='[OBS] stop record')
         sys.exit(130)

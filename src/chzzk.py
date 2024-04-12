@@ -34,7 +34,7 @@ async def main():
                                    channel_message(channel_id, live_status))
 
             start_record()
-            show_desktop_notification(title='[OBS] start record', message='')
+            show_desktop_notification(title='[OBS] start record')
             line_notify_api_notify(message='[OBS] start record')
         else:  # 'CLOSE'
             show_desktop_notification(
@@ -45,7 +45,7 @@ async def main():
                                    channel_message(channel_id, live_status))
 
             stop_record()
-            show_desktop_notification(title='[OBS] stop record', message='')
+            show_desktop_notification(title='[OBS] stop record')
             line_notify_api_notify(message='[OBS] stop record')
 
     channel_cache = Cache(channel=channel, live_status=live_status)
