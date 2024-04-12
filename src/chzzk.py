@@ -7,9 +7,7 @@ from line_notification import line_notify_api_notify
 from models.cache import Cache
 from notification import channel_message, start_title, stop_title
 from obs import start_record, stop_record
-from settings import Settings
-
-settings = Settings()
+from settings import settings
 
 cache: dict[str, Cache] = {}
 

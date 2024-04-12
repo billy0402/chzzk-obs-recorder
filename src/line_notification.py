@@ -1,8 +1,6 @@
 import requests
 
-from settings import Settings
-
-settings = Settings()
+from settings import settings
 
 
 def line_notify_api_notify(access_token: str, message: str):

@@ -5,9 +5,7 @@ from chzzk import main
 from desktop_notification import show_desktop_notification
 from line_notification import line_notify_api_notify
 from obs import stop_record
-from settings import Settings
-
-settings = Settings()
+from settings import settings
 
 while True:
     try:
