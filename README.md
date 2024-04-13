@@ -11,6 +11,7 @@ A Python script to start/stop recording when CHZZK channel start/stop streaming.
 ## Development environment
 
 - [macOS 12.7.2](https://www.apple.com/tw/macos/monterey/)
+- [Tiny 11 ARM 22H2](https://archive.org/details/tiny-11-NTDEV/)
 - [Visual Studio Code 1.85.1](https://code.visualstudio.com/)
 - [Python 3.11.7](https://www.python.org/)
 - [python-chzzk](https://github.com/billy0402/python-chzzk)
@@ -96,6 +97,14 @@ This is a `win_toaster` issue, dependent on this issue: [Windows-10-Toast-Notifi
 We won't change the package behavior.
 
 If there is another solution to fix it, please let me know.
+
+---
+
+If you're using Windows, the environment variables might not update normally.
+
+Please check whether the notification showing the channel message is correct, or restart the terminal.
+
+Please use the Command Prompt (CMD) outside the IDE, as the terminal inside the IDE always has problems even after restarting the computer.
 
 ---
 
