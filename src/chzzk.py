@@ -4,7 +4,7 @@ from python_chzzk import Chzzk, Credential
 
 from actions import start_streaming, stop_streaming
 from models.cache import Cache
-from obs import get_obs_is_recording
+from obs import is_obs_recording
 from settings import settings
 
 cache: dict[str, Cache] = {}
@@ -27,9 +27,9 @@ async def main():
             start_streaming(channel, live_status)
         else:  # 'CLOSE'
             stop_streaming(channel, live_status)
-    elif live_status.status == 'OPEN' and not get_obs_is_recording():
+    elif live_status.status == 'OPEN' and not is_obs_recording():
         start_streaming(channel, live_status)
-    elif live_status.status == 'CLOSE' and get_obs_is_recording():
+    elif live_status.status == 'CLOSE' and is_obs_recording():
         stop_streaming(channel, live_status)
 
     channel_cache = Cache(channel=channel, live_status=live_status)

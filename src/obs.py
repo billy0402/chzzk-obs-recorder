@@ -27,31 +27,23 @@ def is_obs_opened() -> bool:
         return False
 
 
-def get_obs_is_recording() -> bool:
+def is_obs_recording() -> bool:
     with OBSClient() as client:
         record_status = client.get_record_status()
         return record_status.output_active
 
 
 def obs_start_recording():
-    if not is_obs_opened():
+    if not is_obs_opened() or is_obs_recording():
         return
 
     with OBSClient() as client:
-        record_status = client.get_record_status()
-        if record_status.output_active:
-            return
-
         client.start_record()
 
 
 def obs_stop_recording():
-    if not is_obs_opened():
+    if not is_obs_opened() or not is_obs_recording():
         return
 
     with OBSClient() as client:
-        record_status = client.get_record_status()
-        if not record_status.output_active:
-            return
-
         client.stop_record()
