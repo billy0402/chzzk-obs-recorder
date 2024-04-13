@@ -32,19 +32,25 @@ $ pipenv install
 $ cp .env.example .env
 ```
 
-| Variable                 | Type              | Default Value | Description                                             |
-| ------------------------ | ----------------- | ------------- | ------------------------------------------------------- |
-| TIME_DELAY               | Optional[Integer] | 10            | Time delay (in seconds) for checking the channel status |
-| CHZZK_AUTH               | String            |               | NID_AUT of CHZZK                                        |
-| CHZZK_SESSION            | String            |               | NID_SES of CHZZK                                        |
-| CHZZK_CHANNEL_ID         | String            |               | Channel ID of CHZZK                                     |
-| LINE_NOTIFY_ACCESS_TOKEN | Optional[String]  |               | Access token for LINE Notify, or LINE Notify won't send |
+| Variable                 | Type             | Default Value | Description                                             |
+| ------------------------ | ---------------- | ------------- | ------------------------------------------------------- |
+| TIME_DELAY               | Integer          | 10            | Time delay (in seconds) for checking the channel status |
+| CHZZK_AUTH               | String           |               | NID_AUT of CHZZK                                        |
+| CHZZK_SESSION            | String           |               | NID_SES of CHZZK                                        |
+| CHZZK_CHANNEL_ID         | String           |               | Channel ID of CHZZK                                     |
+| OBS_WEBSOCKET_HOST       | String           | "localhost"   | Hostname or IP of the OBS WebSocket                     |
+| OBS_WEBSOCKET_PORT       | Integer          | 4455          | Port of the OBS WebSocket                               |
+| OBS_WEBSOCKET_PASSWORD   | String           | ""            | Password of the OBS WebSocket                           |
+| OBS_WEBSOCKET_TIMEOUT    | Integer          | 3             | Connection timeout (in seconds) to the OBS WebSocket    |
+| LINE_NOTIFY_ACCESS_TOKEN | Optional[String] | None          | Access token for LINE Notify, or LINE Notify won't send |
 
 You can retrieve `NID_AUT` and `NID_SES` from browser cookie using https://chzzk.naver.com after logging in.
 
 You can obtain the channel ID from the CHZZK channel URL.
 
 For example, 아야츠노 유니's URL is https://chzzk.naver.com/45e71a76e949e16a34764deb962f9d9f, and the channel ID is `45e71a76e949e16a34764deb962f9d9f`.
+
+The environment variables for OBS WebSocket should match your OBS WebSocket settings.
 
 You can obtain `access_token` from LINE Notify, the API document https://notify-bot.line.me/doc/en/.
 
@@ -60,16 +66,7 @@ If your OBS is not that new, please install it by yourself from [this link](http
 
 ![OBS WebSocket setup](/docs/images/obs-websocket.jpg)
 
-Please update the connection information with `config.toml`.
-
-| Setting  | Type    | Default Value  | Description                         |
-| -------- | ------- | -------------- | ----------------------------------- |
-| host     | String  | "localhost"    | Hostname or IP of the OBS WebSocket |
-| port     | Integer | 4455           | Port of the OBS WebSocket           |
-| password | String  | "mystrongpass" | Password of the OBS WebSocket       |
-| timeout  | Integer | 3              | Connection timeout (in seconds)     |
-
-More information: [obsws-python config file](https://github.com/aatikturk/obsws-python?tab=readme-ov-file#config-file).
+You should update the environment variables with your OBS WebSocket settings.
 
 ## Setup OBS scene
 
