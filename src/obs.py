@@ -13,6 +13,12 @@ def is_obs_opened() -> bool:
         return False
 
 
+def get_obs_is_recording() -> bool:
+    with obs.ReqClient() as client:
+        record_status = client.get_record_status()
+        return record_status.output_active
+
+
 def obs_start_recording():
     if not is_obs_opened():
         return
