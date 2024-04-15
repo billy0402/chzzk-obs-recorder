@@ -27,22 +27,35 @@ def is_obs_opened() -> bool:
         return False
 
 
+def on_obs_opened(func):
+
+    def wrapper():
+        if not is_obs_opened():
+            return
+        func()
+
+    return wrapper
+
+
+@on_obs_opened
 def is_obs_recording() -> bool:
     with OBSClient() as client:
         record_status = client.get_record_status()
         return record_status.output_active
 
 
+@on_obs_opened
 def obs_start_recording():
-    if not is_obs_opened() or is_obs_recording():
+    if is_obs_recording():
         return
 
     with OBSClient() as client:
         client.start_record()
 
 
+@on_obs_opened
 def obs_stop_recording():
-    if not is_obs_opened() or not is_obs_recording():
+    if not is_obs_recording():
         return
 
     with OBSClient() as client:
