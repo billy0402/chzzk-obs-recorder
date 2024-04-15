@@ -1,6 +1,9 @@
 import obsws_python as obs
 
 from settings import settings
+from utils.logger import get_logger
+
+logger = get_logger()
 
 OBS_SOCKET_CONNECTION = {
     'host': settings.obs_websocket_host,
@@ -20,10 +23,10 @@ def is_obs_opened() -> bool:
     try:
         with OBSClient() as client:
             version = client.get_version()
-            print(f'OBS Version: {version.obs_version}')
+            logger.info(f'OBS Version: {version.obs_version}')
             return True
     except ConnectionRefusedError:
-        print('OBS is not activated.')
+        logger.error('OBS is not activated.')
         return False
 
 

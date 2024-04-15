@@ -7,7 +7,9 @@ from actions import start_streaming, stop_streaming
 from models.cache import Cache
 from obs import is_obs_recording
 from settings import settings
+from utils.logger import get_logger
 
+logger = get_logger()
 cache: dict[str, Cache] = {}
 
 
@@ -49,6 +51,6 @@ async def loop_main():
         try:
             await main()
         except Exception as e:
-            print(e)
+            logger.error(e)
 
         sleep(settings.time_delay)
