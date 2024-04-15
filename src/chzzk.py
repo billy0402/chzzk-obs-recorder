@@ -43,9 +43,12 @@ async def main():
     channel_cache = Cache(channel=channel, live_status=live_status)
     cache[channel_id] = channel_cache
 
-    sleep(settings.time_delay)
-
 
 async def loop_main():
     while True:
-        await main()
+        try:
+            await main()
+        except Exception as e:
+            print(e)
+
+        sleep(settings.time_delay)
